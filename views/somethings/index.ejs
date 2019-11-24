@@ -1,0 +1,45 @@
+<% include ../partials/header %>
+
+<div class="container">
+	<header class="jumbotron">
+		<div class="container">
+			<h1>Welcome to something yelp!</h1>
+			<p>View our hand-picked somethings!</p>
+			<p><a class="btn-primary btn-lg" href="/somethings/new" name="newSomething">Add a new Something</a></p>
+		</div>
+		
+	</header>
+
+	<div class="row" style="display:flex; flex-wrap:wrap">
+		<div class="col-lg-12">
+			<h3>Our favorite somethings:</h3>
+		</div>
+	</div>
+	
+	<div class="row text-center disp-flex">
+		<%if (somethings.length > 0){%>
+			<%somethings.forEach(function(something){%>
+				<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+					<div class="thumbnail">
+						<img src="<%=something.image%>" class="img-fluid">
+						<div>
+							Added by: <strong><%= something.author.username %></strong>
+						</div>
+						<div class="caption">
+							<h4><%= something.name %></h4>
+						</div>
+						<p>
+							<a href="/somethings/<%= something._id %>" class="btn btn-primary">More info</a>
+						</p>
+					</div>
+				</div>
+			<%});%>
+		<%} else {%>
+			<p>Something went wrong</p>
+		<%}%>
+	</div>
+	
+</div>
+
+
+<% include ../partials/footer %>
