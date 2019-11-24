@@ -94,6 +94,9 @@ app.use("/somethings/:id/comments", commentsRoutes);
 
 
 // Server check
-app.listen(3000, function(){
-	console.log("YelpCamp server has started");
-});
+// app.listen(3000, function(){
+// 	console.log("YelpCamp server has started");
+// });
+app.listen(process.env.PORT || 3000, () => {
+    console.log("Something server has started");
+})
