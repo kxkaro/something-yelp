@@ -18,11 +18,17 @@ var commentsRoutes 		= require("./routes/comments"),
 
 
 // seedDB(); // this is not needed anumore, it was populating dummy data
+console.log(process.env.DATABASEURL);
 // mongoose.connect('mongodb://localhost:27017/yelp', { 
-mongoose.connect('mongodb+srv://globalUser:TestUser1234@somethingcluster-zo5fb.mongodb.net/test?retryWrites=true&w=majority', { 
+// mongoose.connect('mongodb+srv://globalUser:TestUser1234@somethingcluster-zo5fb.mongodb.net/test?retryWrites=true&w=majority', {
+
+// To use process.eng.DATABASEURL variable, it needs to be created first by command 'export DATABASEURL='mongodb://localhost:27017/yelp', which is the local server. Heroku uses the mongodb server as this variable was not updated there
+
+mongoose.connect(process.env.DATABASEURL, { 
 	useNewUrlParser: true, 
 	useUnifiedTopology: true
 });
+
 
 // app.use(express.static('public'));
 app.use(express.static(__dirname + "/public")); 	// __dirname is the directory where this script is located
@@ -98,5 +104,5 @@ app.use("/somethings/:id/comments", commentsRoutes);
 // 	console.log("YelpCamp server has started");
 // });
 app.listen(process.env.PORT || 3000, () => {
-    console.log("Something server has started");
+    console.log("Something server has started!");
 })
