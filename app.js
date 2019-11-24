@@ -18,7 +18,7 @@ var commentsRoutes 		= require("./routes/comments"),
 
 
 // seedDB(); // this is not needed anumore, it was populating dummy data
-mongoose.connect('mongodb://localhost:27017/yelp', { 
+mongoose.connect('mongodb+srv://kxkaro:KxTest1234@somethingcluster-zo5fb.mongodb.net/test?retryWrites=true&w=majority', { 
 	useNewUrlParser: true, 
 	useUnifiedTopology: true
 });
