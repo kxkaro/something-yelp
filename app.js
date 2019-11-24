@@ -22,9 +22,9 @@ console.log(process.env.DATABASEURL);
 // mongoose.connect('mongodb://localhost:27017/yelp', { 
 // mongoose.connect('mongodb+srv://globalUser:TestUser1234@somethingcluster-zo5fb.mongodb.net/test?retryWrites=true&w=majority', {
 
-// To use process.eng.DATABASEURL variable, it needs to be created first by command 'export DATABASEURL='mongodb://localhost:27017/yelp', which is the local server. Heroku uses the mongodb server as this variable was not updated there
-
-mongoose.connect(process.env.DATABASEURL, { 
+// To use process.eng.DATABASEURL variable, it needs to be created first by command 'export DATABASEURL='mongodb://localhost:27017/yelp', which is the local server. Heroku uses the mongodb server defined in its config variables
+// ... || ... as a backup
+mongoose.connect(process.env.DATABASEURL || 'mongodb://localhost:27017/yelp', { 
 	useNewUrlParser: true, 
 	useUnifiedTopology: true
 });
